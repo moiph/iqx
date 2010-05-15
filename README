@@ -1,0 +1,16 @@
+ ___ ___    __  __
+|_ _/ _ \   \ \/ /
+ | | | | |   \  /
+ | | |_| |   /  \
+|___\__\_\  /_/\_\
+
+IQ X is the backend of next-generation IRC bots.
+
+More specifically, IQ X is a collection of modules that run in xynapse, an event
+processing engine. Events, such as a public message on an IRC channel, are
+packaged into a JSON object by an IQ X frontend script running on an IRC client.
+The event is sent to an IQ X server, a xynapse instance, where it is processed
+by one or more event handlers. The event handlers can return commands back to
+the frontend. A command may be to send text back to an IRC channel, for example.
+
+IQ X is currently in a very early stage.

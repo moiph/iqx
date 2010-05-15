@@ -1,0 +1,9 @@
+#!/bin/sh
+cd `dirname $0`
+if [ -x "xynapse" ]; then
+  XYNAPSE="./xynapse"
+else
+  XYNAPSE="xynapse"
+fi
+
+$XYNAPSE -c iqx.conf
