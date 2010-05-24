@@ -28,18 +28,20 @@ sub check_socket
 {
   return if !$sock;
 
-  my $msg;
-  $sock->recv($msg, 4096);
-  if ($msg) {
-    print "Got from server: $msg";
+  my $data;
+  $sock->recv($data, 4096);
+  if ($data) {
+    print "Got from server: $data";
 
     my $server = Irssi::active_server();
     my $json = new JSON;
-    my $stuff = $json->decode($msg);
+    my $stuff = $json->decode($data);
     if ($stuff) {
-      $server->command("msg #IQ $msg");
+      my $msg  = $stuff->{msg};
+      my $chan = $stuff->{target};
+      $server->command("msg $chan $msg");
     } else {
-      print "Failed to decode JSON: $msg";
+      print "Failed to decode JSON: $data";
     }
   }
 }

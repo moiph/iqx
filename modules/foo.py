@@ -1,9 +1,16 @@
 import iqx
 
-
 def bar(event):
   print event
-  return {"foo": 1}
+  msgParts = event['data']['message'].split(' ')
+  target = event['data']['target']
+  returnMsg = null
+
+  if msgParts[0] == ".8ball":
+     returnMsg = "Definitely"
+
+  if returnMsg:
+    return {"target": target, "msg": returnMsg}
 
 
 iqx.bind('irc', 'pubmsg', bar)
